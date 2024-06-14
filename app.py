@@ -3,9 +3,10 @@ import os
 import json
 from dotenv import load_dotenv
 import google.generativeai as genai
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app, resources={r"/*": {"origins": "https://app.rework.club"}})
 load_dotenv()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
